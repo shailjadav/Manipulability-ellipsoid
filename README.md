@@ -36,8 +36,10 @@ l2=1;
 J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l2*cos(th1(t)+th2(t)),l2*cos(th1(t)+th2(t))]
 ```
 Two critical observations about the jacobian matrix.
- Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
- The jacobian matrix is not strictly orthogonal.
+[1]Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
+[2]The jacobian matrix is not strictly orthogonal.
+ 
+ ```
 [a,b]=eig(J)
 figure
 plot([0 a(1,1)],[0 a(2,1)],'r','linewidth',2)
@@ -47,6 +49,7 @@ axis([-2 2 -2 2])
 axis square
 grid minor
 title('Eigen vectors','Interpreter',"latex","FontSize",14)
+```
 The orthogonal matrix has a unique property; when multiplied with its transpose, the resultant matrix will be an Identity matrix, which is not the case as we observe from the above simulations.Further, the Jacobian can be a rectangular matrix in redundant manipulators, where the concept of eigenvalues is limited.
 
 To resolve this, we can take an alternative approach in which we take the Jacobian matrix and multiply it with its transpose. The resultant matrix is symmetric and orthogonal, and positive semi-definite. The positive eigenvalues are essential to define the distance of the major and minor axis of ellipsoids, which comes from the square roots of eigenvalues of the Jacobian matrix multiplied with its transpose.
