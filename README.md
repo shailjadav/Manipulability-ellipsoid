@@ -2,20 +2,21 @@
 Shail Jadav 
 https://shailjadav.github.io
 
-       The manipulability ellipsoid is used to apprehend the manipulation representation, perceive the manipulator's ability to exert force and movement in specific configurations. Manipulation is defined using a jacobian matrix of the manipulator.
+The manipulability ellipsoid is used to apprehend the manipulation representation, perceive the manipulator's ability to exert force and movement in specific configurations. Manipulation is defined using a jacobian matrix of the manipulator.
 Let's understand Jacobian first.
+
+```
 clear;clc;close all
 
 Jacobian for RR Serial Chain
 syms l1 l2 th1(t) th2(t) t
-
 
 x=l1*cos(th1(t)) + l2*cos(th1(t)+th2(t));
 y=l1*sin(th1(t)) + l2*sin(th1(t)+th2(t));
 
 dx=diff(x,t);
 dy=diff(y,t);
-
+```
 Velocity in X-direction
 pretty(simplify(dx))
 Velocity in Y-direction
