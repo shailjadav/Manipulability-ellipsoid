@@ -39,6 +39,8 @@ l1=1;
 l2=1;
 J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l2*cos(th1(t)+th2(t)),l2*cos(th1(t)+th2(t))]
 ```
+![1](https://user-images.githubusercontent.com/36672410/127634170-aac1c4a8-b7ae-44ce-922a-8926da84dc37.PNG)
+
 **Two critical observations about the jacobian matrix.
 <br />
 [1] Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
@@ -47,6 +49,11 @@ J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l
  
  ```
 [a,b]=eig(J)
+```
+![2](https://user-images.githubusercontent.com/36672410/127634281-ae20371d-235c-4b1a-a928-0901a97532c9.PNG)
+
+
+```
 figure
 plot([0 a(1,1)],[0 a(2,1)],'r','linewidth',2)
 hold on
@@ -56,12 +63,19 @@ axis square
 grid minor
 title('Eigen vectors','Interpreter',"latex","FontSize",14)
 ```
+![3](https://user-images.githubusercontent.com/36672410/127634302-9b6405fe-8d42-46fa-af00-bb3e2eac224b.PNG)
+
+
 The orthogonal matrix has a unique property; when multiplied with its transpose, the resultant matrix will be an Identity matrix, which is not the case as we observe from the above simulations.Further, the Jacobian can be a rectangular matrix in redundant manipulators, where the concept of eigenvalues is limited.
 
 To resolve this, we can take an alternative approach in which we take the Jacobian matrix and multiply it with its transpose. The resultant matrix is symmetric and orthogonal, and positive semi-definite. The positive eigenvalues are essential to define the distance of the major and minor axis of ellipsoids, which comes from the square roots of eigenvalues of the Jacobian matrix multiplied with its transpose.
 
 ```
 [a,b]=eig(J*J')
+```
+![4](https://user-images.githubusercontent.com/36672410/127634395-55de6ee8-f597-4525-81a2-da5051d22714.PNG)
+
+```
 figure
 plot([0 a(1,1)],[0 a(2,1)],'r','linewidth',2)
 hold on
@@ -70,6 +84,13 @@ axis([-2 2 -2 2])
 axis square
 grid minor
 title('Eigen vectors','Interpreter',"latex","FontSize",14)
+```
+
+![5](https://user-images.githubusercontent.com/36672410/127634497-18de7045-0407-4e33-a64c-ca2bea228592.PNG)
+
+
+```
+
 xi(1,:)=(0:pi/100:2*pi);
 xi(2,:)=(2*pi:-pi/100:0);
 figure()
