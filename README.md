@@ -36,9 +36,9 @@ l2=1;
 J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l2*cos(th1(t)+th2(t)),l2*cos(th1(t)+th2(t))]
 ```
 Two critical observations about the jacobian matrix.
-<\br>
+<br />
 [1]Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
-<\br>
+<br />
 [2]The jacobian matrix is not strictly orthogonal.
  
  ```
