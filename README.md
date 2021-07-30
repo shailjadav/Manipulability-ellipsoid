@@ -35,11 +35,11 @@ l1=1;
 l2=1;
 J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l2*cos(th1(t)+th2(t)),l2*cos(th1(t)+th2(t))]
 ```
-Two critical observations about the jacobian matrix.
+**Two critical observations about the jacobian matrix.
 <br />
 [1]Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
 <br />
-[2]The jacobian matrix is not strictly orthogonal.
+[2]The jacobian matrix is not strictly orthogonal.**
  
  ```
 [a,b]=eig(J)
