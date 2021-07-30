@@ -3,6 +3,10 @@ Shail Jadav
 https://shailjadav.github.io
 
 The manipulability ellipsoid is used to apprehend the manipulation representation, perceive the manipulator's ability to exert force and movement in specific configurations. Manipulation is defined using a jacobian matrix of the manipulator.
+
+![Manipulation](https://user-images.githubusercontent.com/36672410/127633356-3b0c0672-d440-4e75-872b-8f1f35bfbf8a.gif)
+
+
 Let's understand Jacobian first.
 
 ```
