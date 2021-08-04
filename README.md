@@ -2,13 +2,14 @@
 Shail Jadav 
 https://shailjadav.github.io
 
-The manipulability ellipsoid is used to apprehend the manipulation representation, perceive the manipulator's ability to exert force and movement in specific configurations. Manipulation is defined using a jacobian matrix of the manipulator.
+The manipulability ellipsoid is used to, apprehend the manipulation representation, perceive the manipulator's ability to exert force and movement in specific configurations. Manipulation is defined using a jacobian matrix of the manipulator.
 
 ![Manipulation](https://user-images.githubusercontent.com/36672410/127633356-3b0c0672-d440-4e75-872b-8f1f35bfbf8a.gif)
 
 
 Let's understand Jacobian first.
 
+Here is a forward kinematics of RR serial chain.
 ```
 clear;clc;close all
 
@@ -43,9 +44,9 @@ J=[-l1*sin(th1(t))-l2*sin(th1(t)+th2(t)),-l2*sin(th1(t)+th2(t));l1*cos(th1(t))+l
 
 **Two critical observations about the jacobian matrix.
 <br />
-[1] Jacobian matrix is not a strictly positive definite matrix. (Eigen values can be negative)
+[1] Jacobian matrix is not a positive definite matrix. (Eigen values can be negative)
 <br />
-[2] The jacobian matrix is not strictly orthogonal.**
+[2] The jacobian matrix is not always orthogonal.**
  
  ```
 [a,b]=eig(J)
@@ -66,7 +67,7 @@ title('Eigen vectors','Interpreter',"latex","FontSize",14)
 ![3](https://user-images.githubusercontent.com/36672410/127634302-9b6405fe-8d42-46fa-af00-bb3e2eac224b.PNG)
 
 
-The orthogonal matrix has a unique property; when multiplied with its transpose, the resultant matrix will be an Identity matrix, which is not the case as we observe from the above simulations.Further, the Jacobian can be a rectangular matrix in redundant manipulators, where the concept of eigenvalues is limited.
+The orthonormal matrix has a unique property; when multiplied with its transpose, the resultant matrix will be an Identity matrix, which is not the case as we observe from the above simulations.Further, the Jacobian can be a rectangular matrix in redundant manipulators, where the concept of eigenvalues is not valid.
 
 To resolve this, we can take an alternative approach in which we take the Jacobian matrix and multiply it with its transpose. The resultant matrix is symmetric and orthogonal, and positive semi-definite. The positive eigenvalues are essential to define the distance of the major and minor axis of ellipsoids, which comes from the square roots of eigenvalues of the Jacobian matrix multiplied with its transpose.
 
